@@ -435,6 +435,27 @@ flex-direction: column;
     .projects-section .project-card {
         transition: none;
     }
+  /* Project case study link */
+.project-view-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #147d6e;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: gap 0.2s ease;
+}
+
+.project-view-link:hover {
+    gap: 12px;
+    text-decoration: underline;
+}
+
+.project-view-link:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+}
 
     .projects-section .project-card:hover {
         transform: none;
