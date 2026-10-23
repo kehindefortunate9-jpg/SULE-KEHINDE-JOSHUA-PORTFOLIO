@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Project case study for the Renewed Health Medical Centre Electronic Medical Records platform by Kehinde Fortunate."
+    >
+
+    <meta name="theme-color" content="#101c2c">
+
+    <title>Renewed Health EMR | Kehinde Fortunate</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        :root {
+            --background: #f5f7fa;
+            --surface: #ffffff;
+            --dark: #101c2c;
+            --text: #263448;
+            --muted: #697789;
+            --accent: #20a994;
+            --accent-light: #e3f7f2;
+            --border: #e3e9ef;
+            --radius: 20px;
+            --shadow: 0 18px 50px rgba(16, 28, 44, 0.07);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text);
+            font-family: "DM Sans", sans-serif;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1120px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+
+        .topbar {
+            background: rgba(255, 255, 255, 0.96);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav {
+            min-height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            color: var(--dark);
+            font-family: "Manrope", sans-serif;
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+        }
+
+        .brand span {
+            color: var(--accent);
+        }
+
+        .back-link {
+            color: var(--muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+        /* Hero */
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            margin-top: 38px;
+            padding: 76px 64px;
+            border-radius: 28px;
+            background:
+                radial-gradient(
+                    circle at 90% 15%,
+                    rgba(32, 169, 148, 0.24),
+                    transparent 30%
+                ),
+                linear-gradient(135deg, #101c2c, #1a3045);
+            color: #ffffff;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            right: -100px;
+            bottom: -150px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            box-shadow:
+                0 0 0 35px rgba(255, 255, 255, 0.025),
+                0 0 0 70px rgba(255, 255, 255, 0.025);
+            pointer-events: none;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            color: #7de0cb;
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #7de0cb;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: "Manrope", sans-serif;
+            line-height: 1.2;
+            letter-spacing: -0.04em;
+        }
+
+        .hero h1 {
+            max-width: 800px;
+            margin-top: 25px;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+        }
+
+        .hero h1 span {
+            color: #7de0cb;
+        }
+
+        .hero-description {
+            max-width: 690px;
+            margin-top: 24px;
+            color: #d1dce8;
+            font-size: 1.05rem;
+            line-height: 1.9;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 13px;
+            margin-top: 32px;
+        }
+
+        .button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 48px;
+            padding: 12px 20px;
+            border: 1px solid transparent;
+            border-radius: 9px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .button-primary {
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        .button-primary:hover {
+            background: #188b7b;
+        }
+
+        .button-secondary {
+            border-color: rgba(255, 255, 255, 0.28);
+            color: #ffffff;
+        }
+
+        .button-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Project information */
+
+        .project-overview {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 24px;
+        }
+
+        .overview-card {
+            padding: 25px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: var(--surface);
+        }
+
+        .overview-card span {
+            display: block;
+            margin-bottom: 9px;
+            color: var(--muted);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        .overview-card strong {
+            color: var(--dark);
+            font-family: "Manrope", sans-serif;
+            font-size: 1rem;
+        }
+
+        /* Content sections */
+
+        .content-section {
+            padding: 76px 0 0;
+        }
+
+        .section-label {
+            margin-bottom: 12px;
+            color: var(--accent);
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .section-heading {
+            max-width: 750px;
+            color: var(--dark);
+            font-size: clamp(1.8rem, 4vw, 2.7rem);
+        }
+
+        .section-description {
+            max-width: 760px;
+            margin-top: 18px;
+            color: var(--muted);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 32px;
+        }
+
+        .feature-card {
+            padding: 27px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--surface);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 43px;
+            height: 43px;
+            margin-bottom: 22px;
+            border-radius: 12px;
+            background: var(--accent-light);
+            color: #147d6e;
+            font-family: "Manrope", sans-serif;
+            font-weight: 800;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 12px;
+            color: var(--dark);
+            font-size: 1.05rem;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        /* Technology */
+
+        .technology-panel {
+            margin-top: 32px;
+            padding: 32px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--surface);
+        }
+
+        .technology-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .technology-list span {
+            padding: 9px 14px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: #f8fafc;
+            color: var(--dark);
+            font-size: 0.84rem;
+            font-weight: 600;
+        }
+
+        /* Closing panel */
+
+        .closing-panel {
+            margin-top: 76px;
+            padding: 48px;
+            border-radius: 24px;
+            background: var(--accent-light);
+            text-align: center;
+        }
+
+        .closing-panel h2 {
+            color: var(--dark);
+            font-size: clamp(1.7rem, 4vw, 2.4rem);
+        }
+
+        .closing-panel p {
+            max-width: 600px;
+            margin: 16px auto 25px;
+            color: var(--muted);
+        }
+
+        .closing-panel .button {
+            background: var(--dark);
+            color: #ffffff;
+        }
+
+        /* Footer */
+
+        footer {
+            padding: 32px 0;
+            margin-top: 60px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive design */
+
+        @media (max-width: 800px) {
+            .hero {
+                padding: 52px 32px;
+            }
+
+            .project-overview {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 560px) {
+            .container {
+                width: min(100% - 28px, 1120px);
+            }
+
+            .nav {
+                min-height: 68px;
+            }
+
+            .hero {
+                margin-top: 20px;
+                padding: 38px 23px;
+                border-radius: 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.45rem;
+            }
+
+            .hero-description {
+                font-size: 0.95rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .button {
+                width: 100%;
+            }
+
+            .content-section {
+                padding-top: 55px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card {
+                padding: 23px;
+            }
+
+            .technology-panel {
+                padding: 23px;
+            }
+
+            .closing-panel {
+                padding: 32px 22px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="topbar">
+        <div class="container nav">
+
+            <a class="brand" href="../index.html">
+                KEHINDE<span>.</span>
+            </a>
+
+            <a class="back-link" href="../index.html#projects">
+                ← Back to Portfolio
+            </a>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Hero -->
+        <section class="container hero">
+
+            <p class="eyebrow">
+                Healthcare Technology · Project Case Study
+            </p>
+
+            <h1>
+                Renewed Health
+                <span>Medical Centre EMR.</span>
+            </h1>
+
+            <p class="hero-description">
+                A database-driven healthcare application designed to
+                support structured patient records, clinical workflows,
+                and more organized access to healthcare information.
+            </p>
+
+            <div class="hero-actions">
+                <a class="button button-primary" href="#overview">
+                    Explore the Project ↓
+                </a>
+
+                <a
+                    class="button button-secondary"
+                    href="mailto:kehindefortunate9@gmail.com?subject=Renewed%20Health%20EMR%20Project%20Enquiry"
+                >
+                    Discuss a Similar Project
+                </a>
+            </div>
+
+        </section>
+
+        <!-- Project overview -->
+        <section class="container project-overview" id="overview">
+
+            <article class="overview-card">
+                <span>Project Category</span>
+                <strong>Electronic Medical Records</strong>
+            </article>
+
+            <article class="overview-card">
+                <span>Technology Stack</span>
+                <strong>PHP &amp; MySQL</strong>
+            </article>
+
+            <article class="overview-card">
+                <span>Development Stage</span>
+                <strong>In Development</strong>
+            </article>
+
+        </section>
+
+        <!-- Project background -->
+        <section class="container content-section">
+
+            <p class="section-label">01 — The Project</p>
+
+            <h2 class="section-heading">
+                Organizing healthcare information through technology.
+            </h2>
+
+            <p class="section-description">
+                Renewed Health Medical Centre EMR is a healthcare
+                software project focused on creating a structured
+                digital environment for patient information and
+                healthcare operations. The goal is to support more
+                organized record management and provide a foundation
+                for additional clinical and administrative workflows.
+            </p>
+
+        </section>
+
+        <!-- Features -->
+        <section class="container content-section">
+
+            <p class="section-label">02 — Key Capabilities</p>
+
+            <h2 class="section-heading">
+                Designed around essential healthcare workflows.
+            </h2>
+
+            <p class="section-description">
+                The project is organized around the following
+                functional areas. Features should be considered
+                available only when implemented and tested in the
+                working application.
+            </p>
+
+            <div class="feature-grid">
+
+                <article class="feature-card">
+                    <div class="feature-number">01</div>
+
+                    <h3>Patient Records</h3>
+
+                    <p>
+                        A structured approach to patient registration,
+                        identification, record retrieval, and
+                        maintaining patient information.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-number">02</div>
+
+                    <h3>Clinical Workflows</h3>
+
+                    <p>
+                        A foundation for organizing clinical information
+                        and supporting authorized healthcare staff
+                        as they work with patient records.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-number">03</div>
+
+                    <h3>Staff Access</h3>
+
+                    <p>
+                        A role-aware application structure intended
+                        to support appropriate access to authorized
+                        areas of the system.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-number">04</div>
+
+                    <h3>Application Dashboard</h3>
+
+                    <p>
+                        A central interface for navigating the
+                        application's major modules and organizing
+                        day-to-day software workflows.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-number">05</div>
+
+                    <h3>Database Integration</h3>
+
+                    <p>
+                        PHP and MySQL provide the foundation for
+                        structured application data and database-driven
+                        features.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-number">06</div>
+
+                    <h3>Security Considerations</h3>
+
+                    <p>
+                        Authentication, authorization, secure sessions,
+                        and careful handling of sensitive health
+                        information are important development priorities.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- Technologies -->
+        <section class="container content-section">
+
+            <p class="section-label">03 — Technology</p>
+
+            <h2 class="section-heading">
+                Built with practical web technologies.
+            </h2>
+
+            <div class="technology-panel">
+
+                <p class="section-description">
+                    The project uses familiar web technologies to
+                    build and maintain a database-driven application.
+                </p>
+
+                <div class="technology-list">
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                    <span>JavaScript</span>
+                    <span>PHP</span>
+                    <span>MySQL</span>
+                    <span>GitHub</span>
+                    <span>cPanel Deployment</span>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Contact -->
+        <section class="container closing-panel">
+
+            <h2>Building a healthcare or business platform?</h2>
+
+            <p>
+                If your organization needs a business website or a
+                custom web application, let's discuss the requirements
+                and explore a suitable solution.
+            </p>
+
+            <a
+                class="button"
+                href="mailto:kehindefortunate9@gmail.com?subject=Web%20Development%20Enquiry"
+            >
+                Contact Kehinde Fortunate →
+            </a>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>
+                &copy; 2026 Kehinde Fortunate.
+                Independent Web Developer · Lagos, Nigeria.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
