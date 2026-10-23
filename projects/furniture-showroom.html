@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Interactive Furniture Showroom — a premium digital furniture shopping experience concept featuring room inspiration, an AI shopping assistant concept, quote requests and WhatsApp support."
+    >
+
+    <title>Interactive Furniture Showroom | Project Case Study</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        :root {
+            --forest: #183b32;
+            --forest-light: #244c40;
+            --cream: #f7f4ed;
+            --white: #ffffff;
+            --copper: #bd9065;
+            --text: #292c28;
+            --muted: #777b73;
+            --border: #e6e1d8;
+            --radius: 20px;
+            --shadow: 0 20px 55px rgba(20, 35, 28, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            color: var(--text);
+            background: var(--cream);
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .container {
+            width: min(1120px, 90%);
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+
+        .navbar {
+            background: rgba(247, 244, 237, 0.96);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            min-height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand {
+            color: var(--forest);
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+        }
+
+        .brand span {
+            display: block;
+            color: var(--muted);
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+
+        .back-link {
+            color: var(--forest);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            color: var(--copper);
+        }
+
+        /* Hero */
+
+        .hero {
+            background: var(--forest);
+            color: var(--white);
+            padding: 90px 0 85px;
+            overflow: hidden;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--copper);
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 28px;
+            height: 1px;
+            background: var(--copper);
+        }
+
+        .hero h1 {
+            max-width: 850px;
+            margin: 22px 0;
+            font-family: "Playfair Display", serif;
+            font-size: clamp(2.6rem, 6vw, 5rem);
+            font-weight: 500;
+            line-height: 1.12;
+            letter-spacing: -1.8px;
+        }
+
+        .hero h1 em {
+            color: #d8b18a;
+            font-weight: 400;
+        }
+
+        .hero-description {
+            max-width: 650px;
+            color: #d6e0d9;
+            font-size: 1.05rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 32px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 49px;
+            padding: 12px 22px;
+            border: 1px solid transparent;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            transition: 0.25s ease;
+        }
+
+        .button-primary {
+            color: var(--forest);
+            background: #e5c29d;
+        }
+
+        .button-primary:hover {
+            background: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .button-outline {
+            color: var(--white);
+            border-color: rgba(255, 255, 255, 0.35);
+        }
+
+        .button-outline:hover {
+            border-color: var(--copper);
+            color: #e5c29d;
+        }
+
+        /* Project overview */
+
+        .overview {
+            padding: 45px 0;
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .overview-item {
+            padding-left: 18px;
+            border-left: 2px solid var(--copper);
+        }
+
+        .overview-item span {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--muted);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .overview-item strong {
+            color: var(--forest);
+            font-size: 0.95rem;
+        }
+
+        /* Main content */
+
+        .section {
+            padding: 85px 0;
+        }
+
+        .section-white {
+            background: var(--white);
+        }
+
+        .section-heading {
+            max-width: 700px;
+            margin-bottom: 38px;
+        }
+
+        .section-heading h2 {
+            margin: 12px 0 16px;
+            color: var(--forest);
+            font-family: "Playfair Display", serif;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 55px;
+            align-items: start;
+        }
+
+        .content-copy h3 {
+            margin-bottom: 14px;
+            color: var(--forest);
+            font-family: "Playfair Display", serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+        }
+
+        .content-copy p {
+            margin-bottom: 16px;
+            color: #646a62;
+        }
+
+        .highlight-box {
+            padding: 28px;
+            background: var(--cream);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+        }
+
+        .highlight-box h3 {
+            margin-bottom: 12px;
+            color: var(--forest);
+        }
+
+        .highlight-box p {
+            color: var(--muted);
+        }
+
+        /* Showroom visual */
+
+        .showroom-visual {
+            position: relative;
+            min-height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            overflow: hidden;
+            color: var(--white);
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(12, 30, 24, 0.02) 15%,
+                    rgba(12, 30, 24, 0.85) 100%
+                ),
+                url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1400&q=85")
+                center / cover;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .showroom-visual .visual-label {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 8px 13px;
+            color: var(--forest);
+            background: rgba(255, 255, 255, 0.94);
+            border-radius: 4px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .showroom-visual h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 2rem;
+            font-weight: 500;
+        }
+
+        .showroom-visual p {
+            max-width: 420px;
+            color: #f0f1ed;
+        }
+
+        /* Feature cards */
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .feature-card {
+            padding: 28px;
+            background: var(--cream);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            transition: 0.25s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-number {
+            display: inline-flex;
+            width: 42px;
+            height: 42px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--forest);
+            background: #e7d8c5;
+            border-radius: 50%;
+            font-weight: 700;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+            color: var(--forest);
+            font-size: 1.08rem;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+            font-size: 0.91rem;
+        }
+
+        .status-label {
+            display: inline-block;
+            margin-top: 17px;
+            padding: 5px 9px;
+            color: #71552f;
+            background: #eee2d1;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Customer journey */
+
+        .journey {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .journey-step {
+            position: relative;
+            padding-top: 22px;
+            border-top: 2px solid var(--copper);
+        }
+
+        .journey-step span {
+            display: block;
+            margin-bottom: 9px;
+            color: var(--copper);
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .journey-step h3 {
+            margin-bottom: 8px;
+            color: var(--forest);
+            font-size: 1rem;
+        }
+
+        .journey-step p {
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+
+        /* Value proposition */
+
+        .value-section {
+            padding: 80px 0;
+            color: var(--white);
+            background: var(--forest);
+        }
+
+        .value-section h2 {
+            max-width: 760px;
+            margin: 15px 0 20px;
+            font-family: "Playfair Display", serif;
+            font-size: clamp(2.2rem, 4vw, 3.6rem);
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .value-section p {
+            max-width: 680px;
+            color: #d6e0d9;
+        }
+
+        /* Footer */
+
+        .footer {
+            padding: 35px 0;
+            background: #102a23;
+            color: #d6e0d9;
+        }
+
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        .footer p {
+            font-size: 0.83rem;
+        }
+
+        .footer a {
+            color: #e5c29d;
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+
+        /* Responsive layout */
+
+        @media (max-width: 850px) {
+            .overview-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .journey {
+                grid-template-columns: repeat(2, 1fr);
+                row-gap: 30px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .nav-inner {
+                min-height: 68px;
+            }
+
+            .hero {
+                padding: 65px 0;
+            }
+
+            .hero h1 {
+                letter-spacing: -0.8px;
+            }
+
+            .overview-grid,
+            .features-grid,
+            .journey {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .showroom-visual {
+                min-height: 300px;
+                padding: 22px;
+            }
+
+            .footer-inner {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container nav-inner">
+            <a class="brand" href="../index.html">
+                FORTUNE SITE
+                <span>WEB DEVELOPMENT PORTFOLIO</span>
+            </a>
+
+            <a class="back-link" href="../index.html#projects">
+                ← Back to Projects
+            </a>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Hero -->
+        <section class="hero">
+            <div class="container">
+                <span class="eyebrow">Selected Project Concept</span>
+
+                <h1>
+                    A Furniture Showroom
+                    <em>Reimagined for Digital Living.</em>
+                </h1>
+
+                <p class="hero-description">
+                    A premium digital furniture-shopping experience designed
+                    to help customers discover beautiful pieces, explore room
+                    inspiration, request quotations and connect with a business
+                    with less back-and-forth.
+                </p>
+
+                <div class="hero-actions">
+                    <a class="button button-primary" href="#features">
+                        Explore the Concept ↓
+                    </a>
+
+                    <a class="button button-outline" href="#contact">
+                        Discuss a Project
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project information -->
+        <section class="overview">
+            <div class="container overview-grid">
+
+                <div class="overview-item">
+                    <span>Project Type</span>
+                    <strong>Furniture & Retail</strong>
+                </div>
+
+                <div class="overview-item">
+                    <span>Design Direction</span>
+                    <strong>Premium & Minimal</strong>
+                </div>
+
+                <div class="overview-item">
+                    <span>Core Focus</span>
+                    <strong>Digital Showroom</strong>
+                </div>
+
+                <div class="overview-item">
+                    <span>Project Stage</span>
+                    <strong>Concept & Proposal</strong>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Project overview -->
+        <section class="section">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">The Opportunity</span>
+
+                    <h2>Furniture shopping should feel inspiring, not complicated.</h2>
+
+                    <p>
+                        The goal is to create a digital experience that brings
+                        the showroom closer to the customer and makes the journey
+                        from inspiration to enquiry simpler.
+                    </p>
+                </div>
+
+                <div class="two-column">
+
+                    <div class="content-copy">
+                        <h3>The challenge</h3>
+
+                        <p>
+                            Customers often need to ask several questions before
+                            they can confidently choose furniture. They may need
+                            help understanding product options, dimensions,
+                            finishes, pricing and delivery arrangements.
+                        </p>
+
+                        <p>
+                            When product discovery and communication are handled
+                            separately, the buying journey can become slow and
+                            difficult to manage.
+                        </p>
+
+                        <h3>A better digital experience</h3>
+
+                        <p>
+                            This concept brings product discovery, room
+                            inspiration, quote requests and customer communication
+                            together in one thoughtfully designed experience.
+                        </p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>The central idea</h3>
+
+                        <p>
+                            Build more than an online catalogue. Create a digital
+                            showroom that helps customers imagine how furniture
+                            could fit into their homes, understand their options
+                            and take the next step toward a purchase.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Showroom visual -->
+        <section class="section section-white">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">The Experience</span>
+
+                    <h2>Bring the feeling of a showroom to the screen.</h2>
+
+                    <p>
+                        Warm interiors, clear product presentation and a
+                        considered visual style can make browsing feel more
+                        personal and engaging.
+                    </p>
+                </div>
+
+                <div class="showroom-visual">
+                    <span class="visual-label">Design Inspiration</span>
+
+                    <h3>Designed around the way people live.</h3>
+
+                    <p>
+                        A visual direction for a furniture brand that values
+                        comfort, quality, craftsmanship and beautiful spaces.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="section" id="features">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">Proposed Features</span>
+
+                    <h2>Useful technology, wrapped in beautiful design.</h2>
+
+                    <p>
+                        These are the proposed capabilities that can turn the
+                        showroom concept into a practical business platform.
+                    </p>
+                </div>
+
+                <div class="features-grid">
+
+                    <article class="feature-card">
+                        <span class="feature-number">01</span>
+
+                        <h3>Interactive Furniture Showroom</h3>
+
+                        <p>
+                            Organise furniture by category, room, style and
+                            product type so customers can discover options
+                            without feeling overwhelmed.
+                        </p>
+
+                        <span class="status-label">Proposed Feature</span>
+                    </article>
+
+                    <article class="feature-card">
+                        <span class="feature-number">02</span>
+
+                        <h3>AI Shopping Assistant</h3>
+
+                        <p>
+                            Guide customers through questions about room size,
+                            preferred style, intended use and budget, then
+                            help them explore suitable products.
+                        </p>
+
+                        <span class="status-label">AI Integration Planned</span>
+                    </article>
+
+                    <article class="feature-card">
+                        <span class="feature-number">03</span>
+
+                        <h3>WhatsApp Enquiries</h3>
+
+                        <p>
+                            Make it easier to ask questions about products,
+                            share an enquiry and continue conversations
+                            through WhatsApp.
+                        </p>
+
+                        <span class="status-label">Integration Planned</span>
+                    </article>
+
+                    <article class="feature-card">
+                        <span class="feature-number">04</span>
+
+                        <h3>Quote Request System</h3>
+
+                        <p>
+                            Allow customers to select furniture and submit
+                            their contact details and requirements for a
+                            tailored quotation.
+                        </p>
+
+                        <span class="status-label">Proposed Feature</span>
+                    </article>
+
+                    <article class="feature-card">
+                        <span class="feature-number">05</span>
+
+                        <h3>Customer Support</h3>
+
+                        <p>
+                            Provide a clear route to customer assistance,
+                            product questions and purchase guidance, with
+                            live support as a planned integration.
+                        </p>
+
+                        <span class="status-label">Support Integration Planned</span>
+                    </article>
+
+                    <article class="feature-card">
+                        <span class="feature-number">06</span>
+
+                        <h3>Purchase Journey</h3>
+
+                        <p>
+                            Structure the path from browsing to product
+                            selection, quotation, order confirmation and
+                            payment integration.
+                        </p>
+
+                        <span class="status-label">Future Development</span>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Customer journey -->
+        <section class="section section-white">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">Customer Journey</span>
+
+                    <h2>From finding inspiration to taking action.</h2>
+
+                    <p>
+                        The experience should guide customers naturally through
+                        four straightforward stages.
+                    </p>
+                </div>
+
+                <div class="journey">
+
+                    <article class="journey-step">
+                        <span>STEP 01</span>
+                        <h3>Discover</h3>
+                        <p>
+                            Browse furniture collections and find styles that
+                            suit a home, office or commercial space.
+                        </p>
+                    </article>
+
+                    <article class="journey-step">
+                        <span>STEP 02</span>
+                        <h3>Explore</h3>
+                        <p>
+                            Review product information and use guided assistance
+                            to narrow down suitable choices.
+                        </p>
+                    </article>
+
+                    <article class="journey-step">
+                        <span>STEP 03</span>
+                        <h3>Enquire</h3>
+                        <p>
+                            Request a quotation or contact the business with
+                            specific questions about selected items.
+                        </p>
+                    </article>
+
+                    <article class="journey-step">
+                        <span>STEP 04</span>
+                        <h3>Purchase</h3>
+                        <p>
+                            Continue through the agreed ordering, payment
+                            and delivery process.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Business value -->
+        <section class="value-section">
+            <div class="container">
+
+                <span class="eyebrow">Business Value</span>
+
+                <h2>A better way to help customers furnish their spaces.</h2>
+
+                <p>
+                    A well-planned showroom can give a furniture business a
+                    stronger online presence, organise product enquiries and
+                    make it easier for customers to understand their options.
+                    With the right integrations, it can also support a more
+                    connected sales and customer-service process.
+                </p>
+
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="section" id="contact">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">Let's Build Something Valuable</span>
+
+                    <h2>Have a business idea that deserves a better digital experience?</h2>
+
+                    <p>
+                        I develop business websites and database-driven
+                        applications designed around real business needs.
+                        Let's discuss your project requirements.
+                    </p>
+                </div>
+
+                <div class="hero-actions">
+                    <a
+                        class="button button-primary"
+                        href="mailto:kehindefortunate9@gmail.com?subject=Furniture%20Showroom%20Project%20Enquiry"
+                    >
+                        Send an Email ↗
+                    </a>
+
+                    <a
+                        class="button"
+                        style="background: var(--forest); color: white;"
+                        href="../index.html#projects"
+                    >
+                        View More Projects
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+
+            <p>
+                © <span id="current-year"></span> Fortune Site.
+                Designed with purpose.
+            </p>
+
+            <a href="../index.html">Back to Portfolio ↑</a>
+
+        </div>
+    </footer>
+
+    <script>
+        // Automatically display the current year in the footer.
+        document.getElementById("current-year").textContent =
+            new Date().getFullYear();
+    </script>
+
+</body>
+</html>
