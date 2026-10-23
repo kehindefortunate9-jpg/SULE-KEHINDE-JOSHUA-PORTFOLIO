@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Shop Poge e-commerce project case study by Kehinde Fortunate, featuring fashion, perfumes, and accessories."
+    >
+
+    <title>Shop Poge E-commerce | Kehinde Fortunate</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        :root {
+            --background: #f8f5f0;
+            --surface: #ffffff;
+            --dark: #30251f;
+            --text: #51443c;
+            --muted: #81756d;
+            --accent: #a77c4d;
+            --accent-light: #f2e8da;
+            --border: #e8dfd5;
+            --radius: 18px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text);
+            font-family: "DM Sans", sans-serif;
+            line-height: 1.75;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1120px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .topbar {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            color: var(--dark);
+            font-family: "Manrope", sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+        }
+
+        .brand span {
+            color: var(--accent);
+        }
+
+        .back-link {
+            color: var(--muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            margin-top: 32px;
+            padding: 70px 60px;
+            border-radius: 26px;
+            background:
+                radial-gradient(
+                    circle at 90% 15%,
+                    rgba(215, 182, 142, 0.32),
+                    transparent 35%
+                ),
+                linear-gradient(135deg, #30251f, #594437);
+            color: #ffffff;
+        }
+
+        .eyebrow {
+            color: #e7c49d;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: "Manrope", sans-serif;
+            line-height: 1.25;
+            letter-spacing: -0.035em;
+        }
+
+        .hero h1 {
+            max-width: 760px;
+            margin-top: 20px;
+            font-size: clamp(2.5rem, 6vw, 4.3rem);
+        }
+
+        .hero h1 span {
+            color: #e7c49d;
+        }
+
+        .hero-description {
+            max-width: 700px;
+            margin-top: 22px;
+            color: #e7ddd5;
+            font-size: 1.05rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 12px 20px;
+            border: 1px solid transparent;
+            border-radius: 9px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            transition: transform 0.2s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .button-primary {
+            background: #c29a6c;
+            color: #30251f;
+        }
+
+        .button-secondary {
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+        }
+
+        .overview {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 22px;
+        }
+
+        .overview-card {
+            padding: 24px;
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            background: var(--surface);
+        }
+
+        .overview-card span {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--muted);
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        .overview-card strong {
+            color: var(--dark);
+            font-family: "Manrope", sans-serif;
+        }
+
+        .section {
+            padding-top: 72px;
+        }
+
+        .section-label {
+            margin-bottom: 12px;
+            color: var(--accent);
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .section h2 {
+            max-width: 760px;
+            color: var(--dark);
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+        }
+
+        .section-intro {
+            max-width: 760px;
+            margin-top: 18px;
+            color: var(--muted);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            padding: 27px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--surface);
+            transition: transform 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .feature-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            background: var(--accent-light);
+            color: #78552f;
+            font-weight: 800;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+            color: var(--dark);
+            font-size: 1.05rem;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .technology-panel {
+            margin-top: 28px;
+            padding: 30px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--surface);
+        }
+
+        .technology-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .technology-list span {
+            padding: 8px 13px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: #fcfaf7;
+            color: var(--dark);
+            font-size: 0.83rem;
+            font-weight: 600;
+        }
+
+        .closing-panel {
+            margin-top: 72px;
+            padding: 46px;
+            border-radius: 22px;
+            background: var(--accent-light);
+            text-align: center;
+        }
+
+        .closing-panel h2 {
+            color: var(--dark);
+            font-size: clamp(1.7rem, 4vw, 2.3rem);
+        }
+
+        .closing-panel p {
+            max-width: 600px;
+            margin: 15px auto 24px;
+            color: var(--muted);
+        }
+
+        .closing-panel .button {
+            background: var(--dark);
+            color: #ffffff;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding: 30px 0;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        @media (max-width: 800px) {
+            .hero {
+                padding: 50px 32px;
+            }
+
+            .overview {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 560px) {
+            .container {
+                width: calc(100% - 28px);
+            }
+
+            .hero {
+                padding: 35px 22px;
+            }
+
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .button {
+                width: 100%;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card {
+                padding: 23px;
+            }
+
+            .closing-panel {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="topbar">
+        <div class="container nav">
+
+            <a class="brand" href="../index.html">
+                SHOP POGE<span>.</span>
+            </a>
+
+            <a class="back-link" href="../index.html#projects">
+                ← Back to Portfolio
+            </a>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Hero -->
+        <section class="container hero">
+
+            <p class="eyebrow">
+                E-commerce · Fashion · Lifestyle
+            </p>
+
+            <h1>
+                Shop Poge
+                <span>Online Shopping Experience.</span>
+            </h1>
+
+            <p class="hero-description">
+                An e-commerce project focused on bringing fashion,
+                perfumes, and accessories into a convenient online
+                shopping experience with a consistent brand identity
+                and an organized product catalogue.
+            </p>
+
+            <div class="hero-actions">
+                <a class="button button-primary" href="#overview">
+                    Explore the Project ↓
+                </a>
+
+                <a
+                    class="button button-secondary"
+                    href="mailto:kehindefortunate9@gmail.com?subject=Shop%20Poge%20E-commerce%20Enquiry"
+                >
+                    Discuss an Online Store
+                </a>
+            </div>
+
+        </section>
+
+        <!-- Overview -->
+        <section class="container overview" id="overview">
+
+            <article class="overview-card">
+                <span>Project Category</span>
+                <strong>E-commerce Website</strong>
+            </article>
+
+            <article class="overview-card">
+                <span>Technology Stack</span>
+                <strong>PHP &amp; MySQL</strong>
+            </article>
+
+            <article class="overview-card">
+                <span>Development Stage</span>
+                <strong>In Development</strong>
+            </article>
+
+        </section>
+
+        <!-- Project background -->
+        <section class="container section">
+
+            <p class="section-label">01 — The Project</p>
+
+            <h2>
+                Bringing a retail brand into the digital marketplace.
+            </h2>
+
+            <p class="section-intro">
+                Shop Poge is an online retail project for fashion,
+                perfumes, and accessories. The project explores how
+                a clear visual identity, organized product categories,
+                and convenient shopping workflows can help customers
+                discover products and interact with a retail business.
+            </p>
+
+        </section>
+
+        <!-- Features -->
+        <section class="container section">
+
+            <p class="section-label">02 — Core Features</p>
+
+            <h2>
+                A shopping experience designed around customers.
+            </h2>
+
+            <p class="section-intro">
+                The following areas describe the project's intended
+                shopping experience. Their availability depends on
+                implementation and testing in the working store.
+            </p>
+
+            <div class="feature-grid">
+
+                <article class="feature-card">
+                    <div class="feature-number">01</div>
+
+                    <h3>Product Categories</h3>
+
+                    <p>
+                        Separate product discovery areas for fashion,
+                        perfumes, and accessories, helping customers
+                        navigate the store more easily.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-number">02</div>
+
+                    <h3>Product Discovery</h3>
+
+                    <p>
+                        An organized catalogue intended to help
+                        shoppers browse products and find items
+                        that match their interests.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-number">03</div>
+
+                    <h3>Shopping Workflow</h3>
+
+                    <p>
+                        A foundation for customer shopping journeys,
+                        including cart functionality and a structured
+                        path toward checkout.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-number">04</div>
+
+                    <h3>Responsive Experience</h3>
+
+                    <p>
+                        A design approach focused on making the
+                        store usable across desktop, tablet,
+                        and mobile screen sizes.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-number">05</div>
+
+                    <h3>Database Integration</h3>
+
+                    <p>
+                        PHP and MySQL provide the foundation for
+                        database-driven product information and
+                        shopping-related application data.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-number">06</div>
+
+                    <h3>Payment Experience</h3>
+
+                    <p>
+                        A checkout experience can integrate payment
+                        processing when the required provider setup,
+                        verification, and testing are complete.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- Technology -->
+        <section class="container section">
+
+            <p class="section-label">03 — Technology</p>
+
+            <h2>
+                A practical foundation for an online store.
+            </h2>
+
+            <div class="technology-panel">
+
+                <p class="section-intro">
+                    The project draws on established web technologies
+                    to support its frontend, application logic,
+                    database, and deployment workflow.
+                </p>
+
+                <div class="technology-list">
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                    <span>JavaScript</span>
+                    <span>PHP</span>
+                    <span>MySQL</span>
+                    <span>GitHub</span>
+                    <span>cPanel</span>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Contact -->
+        <section class="container closing-panel">
+
+            <h2>Planning to sell products online?</h2>
+
+            <p>
+                Let's discuss an e-commerce website tailored to your
+                products, customers, and business requirements.
+            </p>
+
+            <a
+                class="button"
+                href="mailto:kehindefortunate9@gmail.com?subject=E-commerce%20Website%20Enquiry"
+            >
+                Discuss Your Project →
+            </a>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>
+                &copy; 2026 Kehinde Fortunate.
+                Independent Web Developer · Lagos, Nigeria.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
