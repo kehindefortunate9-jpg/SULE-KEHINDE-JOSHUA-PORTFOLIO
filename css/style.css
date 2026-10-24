@@ -461,3 +461,84 @@ flex-direction: column;
         transform: none;
     }
 }
+
+/* ========================================
+   PROFESSIONAL TECHNICAL SKILLS
+======================================== */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.skill-card {
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.035);
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.skill-card-number {
+    margin-bottom: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    opacity: 0.6;
+}
+
+.skill-card h3 {
+    margin: 0 0 14px;
+    font-size: 22px;
+    line-height: 1.4;
+}
+
+.skill-card p {
+    margin: 0 0 24px;
+    font-size: 15px;
+    line-height: 1.8;
+    opacity: 0.8;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.skill-tags span {
+    display: inline-block;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 30px;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+/* Tablet and mobile layouts */
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .skill-card {
+        padding: 24px;
+    }
+
+    .skill-card h3 {
+        font-size: 20px;
+    }
+}
+
